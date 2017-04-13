@@ -1,115 +1,69 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
 <head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>ColorSVG</title>
 
-<style>
-.ge { width:100%; height: auto; margin:auto; margin-top:50px; margin:auto;}
-</style>
+  <link href="dist/css/color-svg.css" media="screen" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    .color-picker-wrapper {
+      top: 48%;
+      left: 48%;
+      position: absolute;
+    }
+	
+	
+  </style>
 
-<style>
-.he { width:100%;}
-</style>
-
-<style>
-.textwhy { width:100%; text-align:center;}
-</style>
-
-
-<style>
-.mainmenu { width:auto; height:50px; margin:auto; background-color: #b82333;   }
-.menul {  width:184px; float:left; position:absolute; left:42%; top:25px; }
-.Hmenul {float:left; margin-top:15px; text-align:center; margin-left:25% }
-.Cmenul { float:left; margin-top:15px ;text-align:center; margin-left:10% }
-.Lmenul {float:left; margin-top:15px; text-align:center; margin-left:10%}
-.Amenul {float:left; margin-top:15px; text-align:center; margin-left:10%}
-
-</style>
-
-<style type="text/css">
-
-@media screen and (min-width: 480px) {
-    .menul {  width:auto; float:left; position:absolute; left:40%; top:50px; }
-	.Hmenul {float:left; margin-top:20px; text-align:center; margin-left:20%  ;font-size:60%  }
-	.Cmenul {float:left; margin-top:20px; text-align:center; margin-left:10%  ;font-size:60%  }
-	.Lmenul {float:left; margin-top:20px; text-align:center; margin-left:10%  ;font-size:60%  }
-	.Amenul {float:left; margin-top:20px; text-align:center; margin-left:10%  ;font-size:60%  }
-	.ge {  height: auto; margin:auto;}
-
-
-	@media screen and (min-width: 800px){
-		.mainmenu { width:auto; height:50px; margin:auto; background-color: #b82333;   }
-        .menul {  width:184px; float:left; position:absolute; left:42%; top:25px; }
-        .Hmenul {float:left; margin-top:20px; text-align:center; margin-left:25% ; font-size:75%}
-        .Cmenul { float:left; margin-top:20px ;text-align:center; margin-left:10%  ;font-size:75% }
-        .Lmenul {float:left; margin-top:20px; text-align:center; margin-left:10%  ;font-size:75% }
-         .Amenul {float:left; margin-top:20px; text-align:center; margin-left:10%  ;font-size:75% }
-		
-
-@media screen and (min-width: 1260px) {
+    <script src="https://cdn.netpie.io/microgear.js"></script>
+    <script>
+      const APPID     = "CNX";
+      const APPKEY    = "WcXSLLlYIhHUXQE";
+      const APPSECRET = "f5ZFFwww0UYXfM1Xk7Lu0A7n4";
     
-	.menul {  width:184px; float:left; position:absolute; left:42%; top:25px; }
-	.Hmenul {float:left; margin-top:20px; text-align:center; margin-left:30%  ;font-size:75%  }
-	.Cmenul {float:left; margin-top:20px; text-align:center; margin-left:10%  ;font-size:75%  }
-	.Lmenul {float:left; margin-top:20px; text-align:center; margin-left:10%  ;font-size:75%  }
-	.Amenul {float:left; margin-top:20px; text-align:center; margin-left:10%  ;font-size:75%  }
-	
-	@media screen and (min-width: 1420px) {
+      var microgear = Microgear.create({
+        key: APPKEY,
+        secret: APPSECRET,
+        alias : "daow"         /*  optional  */
+      });
     
-	.menul { float:left; position:absolute; left:43.5%; top:25px; }
-	.Hmenul {float:left; margin-top:20px; text-align:center; margin-left:25%  ;font-size:90%  }
-	.Cmenul {float:left; margin-top:20px; text-align:center; margin-left:10%  ;font-size:90%  }
-	.Lmenul {float:left; margin-top:20px; text-align:center; margin-left:10%  ;font-size:90%  }
-	.Amenul {float:left; margin-top:20px; text-align:center; margin-left:10%  ;font-size:90%  }
-	
-	@media screen and (min-width: 1920px) {
-    .menul { float:left; position:absolute; left:42%; top:25px; }
-	.Hmenul {float:left; margin-top:20px; text-align:center; margin-left:25%  ;font-size:100%  }
-	.Cmenul {float:left; margin-top:20px; text-align:center; margin-left:10%  ;font-size:100%  }
-	.Lmenul {float:left; margin-top:20px; text-align:center; margin-left:10%  ;font-size:100%  }
-	.Amenul {float:left; margin-top:20px; text-align:center; margin-left:10%  ;font-size:100%  } 
-	
-	
-	.ge { height: auto; margin:auto; margin-top:px}
-	
-		
-	}
+      microgear.on('message',function(topic,msg) {
+        console.log("on message");
+      });
+    
+      microgear.on('connected', function() {
+        microgear.setAlias('daow');    /* alias can be renamed anytime with this function */
+        console.log("on conencted")
+      });
+    
+      microgear.on('present', function(event) {
+       // console.log(event);
+      });
+    
+      microgear.on('absent', function(event) {
+        console.log(event);
+      });
+    
+      microgear.connect(APPID);
+    </script>
 
-</style>
-<link href="index480.css" rel="stylesheet" type="text/css">
 </head>
-
 <body>
-     <div class="mainmenu">
-         <div style=" width:auto; height:200px;">
-          <div class="Hmenul">
-           <a href="index.html" title="HOME"><FONT COLOR=#f5e492>HOME</FONT></a></div>
-          <div class="Cmenul">
-           <a href="Camera.html" title="HOME"><FONT COLOR=#f5e492>CAMERA</FONT></a></div>
-          <div class="Lmenul">
-           <a href="Lens.html" title="HOME"><FONT COLOR=#f5e492>LENS</FONT></a></div>
-          <div class="Amenul">
-           <a href="Accessoriesa.html" title="HOME"><FONT COLOR=#f5e492>ACCESSORIES</FONT></a></div>
-        </div>
-     </div>
 
+  <div class="color-picker-wrapper">
+    <input type="text" class="color-picker" value="" />
+  </div>
 
-<div   class="ge" >
-     
-     <div class="he" ><img src="../../Web psd/Web index/jpg/DSC01328-2.jpg" width="100%" />      </div>
-      
-      <div class="why" style=" width:auto; height:30px;" ><ul class="textwhy">
-      <h2> <FONT COLOR=#b82333>ทำไมต้องซื้อกับเรา</FONT></h2></ul></div>
-  
-  
-     <div class="he" > <img src="../../Web psd/Web index/jpg/DSC01342-2.jpg" width="100%" /></div>
-     
-      <div class="why" style=" width:auto; height:30px;" ><ul class="textwhy">
-      <h2> <FONT COLOR=#b82333>ทำไมต้องซื้อกับเรา</FONT></h2></ul></div>
-      
-     
-  <div class="he" ><img src="../../Web psd/Web index/jpg/DSC01341-2.jpg" width="100%" /></div>
-</div>
+  <script src="dist/js/vendor/dependencies.min.js"></script>
+  <script src="dist/js/color-svg.js"></script>
+  <script>
+    $(window).load(function() {
+      ColorSVG.init();
+
+    });
+  </script>
 </body>
 </html>
