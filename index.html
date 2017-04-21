@@ -15,7 +15,7 @@
       position: absolute;
     }
 	
-	
+	a:link,a:visited{color:#ccc}
   </style>
 
     <script src="https://cdn.netpie.io/microgear.js"></script>
@@ -60,10 +60,13 @@
   <script src="dist/js/vendor/dependencies.min.js"></script>
   <script src="dist/js/color-svg.js"></script>
   <script>
-    $(window).load(function() {
+    //$(window).load(function() {
+      $(document).ready(function() {  
       ColorSVG.init();
 
     });
   </script>
+
+<div style="margin:auto;"><a href="javascript:location.reload(true)"  style="text-align:center; text-decoration: none;">REFRESH</a></div>
 </body>
 </html>
